@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>石井健治 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>石井健治 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社Schoo</a>
+  <a href="#k2">2. 株式会社バリューＨＲ</a>
+  <a href="#k3">3. 株式会社リーディングマーク</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">執行役員 兼 CRO</span><span class="badge badge-blue">東証グロース</span></div>
+  <div class="co-name">株式会社Schoo</div>
+  <div class="co-url"><a href="https://corp.schoo.jp/" target="_blank">https://corp.schoo.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区鶯谷町</td></tr><tr><th>設立</th><td>2011年</td></tr><tr><th>上場区分</th><td>東証グロース市場(2024年10月上場)</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>2024年10月に東証グロース市場へ新規上場したばかりの成長企業</li><li>累計登録会員数約120万人、累計導入企業数4,000社以上の実績</li><li>執行役員として経営会議に参画し、経営戦略をダイレクトに事業戦略へ落とし込める</li><li>&quot;世の中から卒業をなくす&quot;という社会的意義の高いミッションに携われる</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2011年設立の社会人教育SaaS企業で、2024年10月にグロース市場へ新規上場しました。「世の中から卒業をなくす」をミッションに掲げ、インターネットを活用した学びや教育を通じて社会変革を目指しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2011年設立の社会人教育SaaS企業で、2024年10月にグロース市場へ新規上場しました。「世の中から卒業をなくす」をミッションに掲げ、インターネットを活用した学びや教育を通じて社会変革を目指しています。個人向けオンライン学習サービス「Schoo for Personal」を皮切りに、法人向けの「Schoo for Business」、高等教育機関向けの「Schoo Swing」など、多様なサービスを展開しています。</p><p>2025年2月時点で、累計登録会員数は約120万人、累計導入企業数は4,000社以上と、教育SaaS分野で大きな存在感を示しています。また、全国約45の自治体との提携や、奄美大島との包括協定を通じて、地域への遠隔教育普及にも力を入れています。これは「未来の暮らし」の実現を目指す、社会的意義の高い取り組みです。</p><p>法人向けサービスの拡大や新規事業の立ち上げに関与するポジションでは、経営陣と近い距離で戦略立案や意思決定に関与する機会が豊富です。また、社会的意義の高い事業に携わることで、個人としての成長と社会貢献を両立できる環境が整っています。</p><p><strong>代表取締役社長CEO：森健志郎氏</strong><br>1986年生まれで、近畿大学経営学部を卒業後、リクルートメディアコミュニケーションズに入社。同社でのeラーニング体験を契機に、2011年にSchooを創業しました。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【執行役員 兼 CRO】法人事業本部長(営業・CS部門統括)</div>
+          <div class="job-preview">SaaS × 組織開発支援の総責任者として、セールスとカスタマーサクセス両部門を統括</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>「世の中から卒業をなくす」というミッションを、ビジネスの力で社会実装する</strong></p><p>当社の法人向け事業(SaaS × 組織開発支援)の総責任者であるCRO(Chief Revenue Officer)ポジションです。セールスとカスタマーサクセスの両部門を一体的に統括し、収益の最大化と顧客価値の創出を両輪で推進していただきます。</p><p>執行役員として経営会議に参画し、経営戦略をダイレクトに事業戦略へ落とし込みながら、自ら現場をグリップし実行までを完遂する「実践型リーダー」を求めています。</p><p><strong>主な職務想定</strong></p><ul><li><strong>収益戦略の立案・実行</strong><br>・年間・四半期収益目標の策定とチームへの落とし込み<br>・新規受注・継続・拡販のバランスを最適化した収益ポートフォリオ設計<br>・プライシング戦略・パッケージ設計への経営レベルでの関与</li><li><strong>営業部門の統括</strong><br>・エンタープライズ、SMB双方の営業戦略の策定と実行管理<br>・セールスプロセス、ツール、トレーニングの整備と継続的な改善<br>・採用、育成、評価を通じた営業組織の強化</li><li><strong>カスタマーサクセス部門の統括</strong><br>・オンボーディング、活用支援、更新、拡張の一気通貫CS戦略の設計<br>・チャーン低減、NPS向上を目的としたカスタマージャーニーの改善<br>・顧客成功事例の創出と、マーケ・プロダクトへのフィードバックループ構築</li><li><strong>経営・部門横断的役割</strong><br>・執行役員として経営会議に参画、事業戦略および経営判断へのコミット<br>・プロダクト、マーケ、HR等との連携強化と組織シナジーの最大化<br>・投資家やパートナーとの関係構築における収益責任者としての対外折衝</li></ul><p><strong>必須スキル</strong></p><p>以下の5項目をすべて満たす方を求めています。</p><ul><li><span class='tag tag-must'>MUST</span> <strong>エグゼキューション能力</strong>(戦略を描くだけに留まらず、自ら現場の実行をリードし完遂させる力)<br>現在の組織規模において、CRO自らが実行のハンドルを握らなければ組織そのものが停滞するフェーズにあります。戦略立案と実行・修正を一体として担える能力は、入社後に補完することが不可能な最優先要件です。</li><li><span class='tag tag-must'>MUST</span> <strong>ミッション共感</strong>(「世の中から卒業をなくす」という存在意義への深い腹落ちと、価値観レベルでの共鳴)<br>ミッションへの疑念は将来的なカルチャー破壊のリスクに直結します。価値観は個人の根幹に根差すものであり、後天的な変容が最も困難であるため、選考段階での厳格な見極めを必須とします。</li><li><span class='tag tag-must'>MUST</span> <strong>誠実さ・アンラーン力</strong>(過去の成功体験に固執せず、スクーの環境に合わせて自己を再構築できる力)<br>過去、スキルは高くとも性格や学習スタイルの固定化によりフィットしなかった失敗パターンを反面教師としています。当社特有のカルチャーやスピード感に自らを適応させる素直さと誠実さは、性格に由来するものであり変容が難しいため不可欠です。</li><li><span class='tag tag-must'>MUST</span> <strong>達成意欲</strong>(どんなに困難な状況下でも、目標達成に向けて泥臭く踏みとどまり、やり抜く意志)<br>逆境での粘りや踏ん張り方は、個人の意志や性格に依存する部分が大きく、教育で身につくものではありません。スタートアップ特有の不確実性を突破するための「エンジン」として必須の素養です。</li><li><span class='tag tag-must'>MUST</span> <strong>部門間調整能力</strong>(当社特有の部門間・ステークホルダー間の構造的な難しさを理解し、合意形成を図る力)<br>複数の部門が複雑に絡み合う当社の事業構造において、周囲を巻き込み調整する力は、個人のスタイルに依存します。この調整スタイルは入社後に修正することが最も難しいため、あらかじめ高いレベルで備わっている必要があります。</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> 構造的思考力：因果関係を整理し、本質的な課題から優先順位を導ける力</li><li><span class='tag tag-want'>WANT</span> 現場グリップ力：データで予兆を察知し、有事には自ら商談を打開できる実力</li><li><span class='tag tag-want'>WANT</span> 組織開発・HR知見：経営層と対等に議論でき、専門家をリードできる専門性</li><li><span class='tag tag-want'>WANT</span> SaaS/CRO経験：ARR・チャーンレート等の指標を用いた科学的な組織運営経験</li><li><span class='tag tag-want'>WANT</span> KPIマネジメント：数値をアクションに落とし込み、改善を仕組み化できる実績</li></ul><p><strong>求める人物像</strong></p><ul><li>「戦略」と「泥臭い実行」を往復できる方<br>高い視座を持ちつつも、必要であれば自ら現場に降り、メンバーと共に汗をかける方</li><li>学習し続ける姿勢を持つ方<br>自らがスクーの提供価値を体現し、常に最新の知見を取り入れ、アップデートし続けられる方</li><li>構造的思考と人間味を両立できる方<br>ロジックで組織を動かしつつ、メンバーの感情やカルチャーも大切にできるリーダー</li></ul><p><strong>年収・待遇</strong></p><ul><li>年収：1200～2000万円</li><li>給与改定：年２回</li><li>勤務体系：管理監督者(裁量労働制)を予定</li></ul><p><strong>勤務地・働き方</strong></p><ul><li>自宅／東京都渋谷区鶯谷町(リモート可能だが、週1回出社推奨)</li><li>ハイブリットワーク</li><li>半期に一度の全社総会は交通費＆宿泊費支給</li><li>その他、月3万円までの交通費支給(地方住まいでも東京オフィスに来たときは上限3万円まで交通費精算可)</li><li>リモートでの使用も可能なウェルカムランチ制度(地方在住者のウェルカムランチはご自分で買ったランチ精算可)</li></ul><p><strong>勤務時間・休暇</strong></p><ul><li>フレックスタイム制</li><li>中抜けについても自律的に可</li><li>週4日勤務正社員</li><li>時短勤務可</li><li>副業可能(申請承認)</li><li>土日、祝日</li><li>年末年始休暇</li><li>入社時特別休暇(3日間)</li><li>有給休暇(入社半年後に10日付与)</li><li>結婚休暇、産前産後休暇、育児休暇、介護休暇、慶弔休暇</li><li>年間123日から125日の範囲で、毎年10月1日を起算とする会社カレンダーで定めます</li></ul><p><strong>福利厚生</strong></p><ul><li>健康保険、PC貸与、スマホ貸与</li><li>雇用形態による裁量や情報格差無し</li><li>個別事情に鑑み、雇用形態の変更は柔軟に相談可</li><li>業務委託や派遣社員、アルバイト社員もMVP表彰受賞対象</li><li>家族も利用できる災害時の安否確認ツール付与</li><li>Schooの視聴無料</li><li>大学院通学など、期間限定で週3以下正社員雇用契約や休職延長など柔軟に対応</li><li>Schooユニバーシティ参加</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京(リモート可)</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://corp.schoo.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://parallel-plow-26b.notion.site/Schoo-Entrance-Book-86da430a6df04139aea9e2beffbbde6c" target="_blank">📖 Schoo Entrance Book</a><a class="lbtn lbtn-out" href="https://note.schoo.jp/n/n58b75f6b5b91" target="_blank">📝 代表インタビュー</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">営業 副部長</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社バリューＨＲ</div>
+  <div class="co-url"><a href="https://www.valuehr.com/" target="_blank">https://www.valuehr.com/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区千駄ヶ谷5-25-5</td></tr><tr><th>設立</th><td>2001年</td></tr><tr><th>上場区分</th><td>東証プライム市場(2013年東証マザーズ上場後移行)</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>昨年度売上100億円突破、前年比20％成長の安定成長企業</li><li>ユーザー数300万人、導入企業5万社超の実績</li><li>Big4監査法人やGAFA日本法人など名だたるエンタープライズ企業が顧客</li><li>健康経営という成長市場で事業を展開</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2001年設立。2013年に東証マザーズへ上場し、市場再編に伴い東証プライム市場へ移行。健康保険組合向けBPOおよび健康管理サービスを中核とする企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2001年設立。2013年に東証マザーズへ上場し、市場再編に伴い東証プライム市場へ移行。健康保険組合向けBPOおよび健康管理サービスを中核とする企業です。健診予約代行、特定保健指導、健康データ管理、健康ポータルサイト運営などを展開し、企業や健康保険組合の健康管理業務をワンストップで支援しています。</p><p>大手監査法人グループの健康保険組合設立支援から事業をスタート。「健康情報のデジタル化と健康管理のインフラ企業」を掲げ、自社開発の健康管理プラットフォーム「バリューカフェテリア®システム」を提供。企業・健康保険組合・健診機関・個人をつなぐ基盤として、ユーザー数300万人、導入企業5万社超へと成長しています。</p><p>昨年度には売上100億円を突破し、前年比20％成長と堅調に拡大。全国4,000箇所以上の健診機関ネットワークを有し、日本生命、大同生命、東京海上、大和総研などとの業務・資本提携を通じて、中小企業向け健康経営支援や営業基盤も強化しています。</p><p>大手監査法人系(Big4)や世界的IT企業(GAFA)の日本法人、さらには国内の伝統的な大企業など、名だたるエンタープライズ企業からの厚い信頼を獲得し続けている一方で、営業現場ではチームを牽引する副本部長に業務が集中してしまうといった課題も生まれています。</p><p><strong>代表取締役社長：藤田美智雄氏</strong><br>1960年生まれ。国際商科大(現東京国際大)商学部を卒業後、アーサー・アンダーセン会計事務所(現あずさ監査法人)に入社し、人事部で採用などを担当。外資系証券会社などを経て、平成１３年７月にバリューＨＲを設立。２８年１２月に東証１部に上場し、現職。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 営業 副部長</div>
+          <div class="job-preview">エンタープライズ案件を推進するプレイングマネージャーとして組織強化を担う</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>昨年度売上100億円を突破し、前年比20％成長を遂げています。一方で、大型のエンタープライズ案件が現場を牽引する部長に集中していることが、現在の組織課題です。さらなる事業拡大に向け、彼らに並ぶ牽引力を持つ副部長(部長候補)の採用を急いでいます。</p><p>現在、営業本部長のもと、5つの営業部(うち1つは営業企画部)が稼働しています。本ポジションのミッションは、プレイングマネージャーとして自ら大型案件を推進しながら、若手育成と組織強化を担うこと。</p><p>同社のサービスは、カスタマイズ開発とBPOを組み合わせた伴走型支援のため、顧客課題を特定するコンサルティング力と、開発・オペレーション部門を巻き込むPM力も求められます。加えて、KPIマネジメントや科学的な営業戦略の構築を通じ、属人的営業からの脱却と仕組み化を推進していただきます。</p><p><strong>業務内容</strong></p><ul><li>リード獲得戦略の立案・実行(ゼロイチ)</li><li>ウェビナー企画</li><li>ホワイトペーパー作成等</li><li>顧客向けPR/マーケティング機能の統括</li><li>営業組織の課題解決</li><li>育成体系の構築</li></ul><p><strong>ミッション</strong></p><ul><li>エンタープライズ企業を中心とする案件獲得、売上拡大の推進</li><li>営業体制の再構築(案件増加に応じた体制づくり)</li><li>業務標準化</li></ul><p>※入社当初は業界理解のためプレイングマネージャーとして動いていただきますが、半年後を目途にチーム管理をお任せする想定です。</p><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span> <strong>エンタープライズ企業向けの営業経験</strong></li><li><span class='tag tag-must'>MUST</span> <strong>コンサル型営業での成果</strong><br>・課題特定→解決策設計→意思決定者合意の一連を主導できる<br>・単価/利益を意識した提案設計ができる(値引きに頼らず通す条件の組み立て)</li><li><span class='tag tag-must'>MUST</span> <strong>営業マネジメント</strong><br>・見込み顧客と商談状況を常に把握し、次のアクションを計画/実行して受注できる<br>・売上予測(着地見込み)を正確に把握し、計画達成を支える<br>・メンバー育成/管理の経験</li><li><span class='tag tag-must'>MUST</span> <strong>カスタマイズ前提の「社内発注者」としての作法</strong><br>・受注後を見据えた&quot;合意事項&quot;を提案段階で固められる(スコープ/責任分界/優先順位/受入基準/制約/体制/意思決定ルール)<br>・要求→要件→仕様の切り分けができ、開発が走れる形に落とせる(業務フロー、例外、データ、権限、運用を押さえる)<br>・変更要求(スコープ追加)に対する判断と合意形成ができる(影響評価：工数/納期/コスト/品質/運用→Go/No-Go→関係者合意)</li><li><span class='tag tag-must'>MUST</span> <strong>プロジェクト推進力(PM素養)</strong><br>・炎上兆候の検知と初動対応ができる(要件膨張、決定遅延、体制不備、品質劣化、会話不足の兆候と打ち手をセットで語れる)<br>・社内横断(開発/CS/運用/管理)を巻き込む合意形成ができる(利害調整、依頼の出し方、根回し、意思決定者の押さえ方)</li></ul><p><strong>求める人物像</strong></p><p>顧客向けPR/マーケティング機能を統括でき、営業組織の課題解決に向き合える即戦力。</p><p><strong>年収・待遇</strong></p><ul><li>想定年収：800万〜1200万円</li><li>※経験、年齢、能力などを考慮の上、決定します</li></ul><p><strong>勤務地</strong></p><ul><li>東京都渋谷区千駄ヶ谷5-25-5</li></ul><p><strong>福利厚生</strong></p><ul><li>社会保険完備(健康・厚生年金・労災・雇用)</li></ul><p><strong>休日休暇</strong></p><ul><li>年間休日120日以上</li><li>完全週休2日制(土・日)祝日</li><li>年末年始休暇(12/29～1/4)</li><li>年次有給休暇</li><li>特別休暇</li><li>ライフサポート休暇</li><li>産前産後休暇</li></ul><p><strong>勤務時間</strong></p><ul><li>9：30～18：00(休憩1時間　時間帯の縛りはなく自由)</li></ul><p><strong>雇用形態</strong></p><ul><li>正社員</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 オフィス勤務</span><span class="pill">💼 営業・事業開発</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.valuehr.com/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">事業責任者候補</span><span class="badge badge-blue">未上場・IPO準備中</span></div>
+  <div class="co-name">株式会社リーディングマーク</div>
+  <div class="co-url"><a href="https://www.leadingmark.jp/" target="_blank">https://www.leadingmark.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区虎ノ門3丁目8番21号 虎ノ門33森ビル10階</td></tr><tr><th>設立</th><td>2008年</td></tr><tr><th>従業員数</th><td>約200名</td></tr><tr><th>上場区分</th><td>未上場・IPO準備中</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>2025年2月に16.2億円の資金調達を実施、累計30億円突破のHRTech企業</li><li>累計利用企業数6,000社、累計受検者数200万人以上の実績</li><li>総合商社・外資コンサル・官公庁など国内トップティア企業の9割がクライアント</li><li>IPO準備フェーズで経営課題に近い立場で関与可能</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">HRTech適性検査クラウド「ミキワメAI」を中心に、採用・配置・定着・マネジメント支援までを一気通貫で展開するHRTech企業です。独自の「組織心理研究所」を擁し、学術的エビデンスに基づくプロダクト開発を行っている点が特徴です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>HRTech適性検査クラウド「ミキワメAI」を中心に、採用・配置・定着・マネジメント支援までを一気通貫で展開するHRTech企業です。独自の「組織心理研究所」を擁し、学術的エビデンスに基づくプロダクト開発を行っている点が特徴です。</p><p>主力の「ミキワメAI 適性検査」は、企業ごとの活躍人材データをもとに候補者の採用マッチ度を可視化するサービスで、累計利用企業数は6,000社、累計受検者数は200万人以上に拡大。2025年2月には16.2億円の資金調達を実施し、累計資金調達額は30億円を突破しています。</p><p>現在は「ONE LM 2029」のもと、AI時代におけるNo.1 HRプラットフォームの実現を目指し、人の特性・状態・置かれた状況を可視化し、離職を減らし活躍を増やすプラットフォームへ進化中です。人口減少により新規採用だけでは組織成長が難しくなる中、「今いる社員が長く活躍できる組織づくり」を支援する社会的意義の高い事業領域です。</p><p>今後はSaaS・AIエージェントに加え、RPO・組織コンサル・研修などのプロフェッショナルサービス領域も視野に入れており、IPO準備を進めながら、コーポレート体制・事業推進体制の強化を進める成長フェーズです。</p><p><strong>代表取締役：飯田悠司氏</strong><br>1985年生まれ。東京大学経済学部へ入学し、大学3年生の2008年、アルバイトで貯めた60万円を元手にリーディングマークを設立。『将来はこうなりたい』と言っていた学生たちが大学3年になると一斉に型にはまった服装をして就活を始めることに疑問を感じ、新しいキャリア選択のプラットフォームをつくれる会社を探したが存在しなかった。ならば自分でつくろう、とリーディングマークを設立。2013年大学生/大学院生向けのキャリアサイト「レクミー」をリリース。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【役員直下】事業責任者候補(採用支援カンパニー)</div>
+          <div class="job-preview">「採用プラットフォーム」から「日本のキャリアインフラ」への変革を牽引する事業家候補</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>【役員直下】事業責任者候補(「採用インフラ」を創る事業家候補)</strong></p><p><strong>本ポジションのミッション</strong></p><p><em>「採用プラットフォーム」から「日本のキャリアインフラ」へ</em></p><p>事業責任者としてのミッションは明確です。HR Techとマーケティングデータを駆使し、日本を代表するエンタープライズ企業の採用プロセスを「オペレーション」から「将来を創る戦略的投資」へと変革する。さらに、企業と学生の意思決定構造そのものを再設計し、「キャリア教育・採用・育成」を一気通貫でデザインする<em>『日本のキャリアインフラ』を構築する</em>ことです。</p><p>この変革を実現するため、組織をリードし、既存顧客アセットの深耕と新規事業創出を並行して推進していただきます。膨大な学生インサイト・行動データと顧客基盤を武器に、1兆円規模の日本採用市場における事業成長を加速させる戦略立案と実行の全権を委譲します。</p><p>採用をコストから企業価値創造のエンジンへと変革する「人的資本経営」の実現—この社会変革のコアとなる事業を、あなたの手で動かしてください。</p><p><strong>募集背景</strong></p><p><em>新規と既存プロダクトの圧倒的成長へ</em></p><p>日本企業の採用は「この人と働きたいか」「何となく他社に勝っている」等、直感とアナログで感覚的に意思決定される慣習が未だ根強く残っています。一般消費財市場ではデータと科学的手法が当たり前の時代に、新卒採用市場は大きく出遅れているのが現実です。</p><p>当社はこの構造的課題を解決に導くため、役員直下の部門長、或いは事業部長ポジションを新設します。あなたには、ミキワメ就活・NEXVEL事業の統括責任者として、既存事業の圧倒的成長と新規事業開発の両輪を率いていただきます。</p><p><strong>事業紹介</strong></p><p><em>国内最大級 上位校データベース『ミキワメ就活』</em></p><p>『ミキワメ就活』は旧帝早慶以上学生の2人に1人が利用し、会員数数万人単位を誇る上位校学生向け就活プラットフォームです。学生は登録後に、ミキワメ就活主催の就活イベントに参加したり、大手企業からのスカウトを受け取ることができる。ミキワメ就活を利用いただく企業は総合商社/外資コンサルをはじめとする就活人気ランキング上位100社の内の90％以上の企業に利用いただいており、学生は厳選された企業群から自分に合った企業にエントリーが可能。</p><p>顧客事例:三菱商事/三井物産/三井不動産/P&G/JR東海/ANA/トヨタなど</p><p><em>ハイクラス就活支援コミュニティ『NEXVEL』</em></p><p>『NEXVEL』は国内最大級の選抜コミュニティです。就活生の中でも選考を突破した方だけが入会が可能な就活コミュニティであり、入会学生は多くの外資/日系企業の個社別イベントに参加したり、メンターからのメンタリングサービスを受けることが可能です。毎年外資系投資銀行、外資戦略ファームの内定者を数多く輩出しており、国内では最古参の就活選抜コミュニティという位置づけです。</p><p>顧客事例:BCG/A.T.カーニー/アクセンチュア/J.P.モルガンなど</p><p><strong>事業の魅力</strong></p><ul><li><strong>顧客</strong>：日本を動かすトップ企業群(総合商社、外資戦略、官公庁、大手メーカー等)。就活人気企業100社の約9割がクライアント。</li><li><strong>アセット</strong>：「ミキワメ就活(上位校向けプラットフォーム)」「NEXVEL(選抜コミュニティ)」という強力な学生接点と、経営層に切り込む「リサーチ＆コンサルティング」機能。</li><li><strong>文化</strong>：「フラット＆ストレート」。昨日社員が提案した改善案が、次の役員会で承認され実装される。そんな意思決定速度が私たちの日常です。失敗を許容し、ラーニングを最大化する組織。</li><li><strong>ビジョン</strong>：「個の可能性を解放し、日本の成長エンジンを再点火する」。数兆円規模へと成長するHR市場の変革期において、我々はルールを変えるゲームチェンジャーです。採用を「コスト」から「未来への投資」に変える。</li></ul><p><strong>業務内容</strong></p><ul><li>目標達成戦略(目標設計・事業戦略・測定指標)策定、リソース配分(予算・人員)、採用計画の全てを設計・実行する</li><li>プロダクト/サービスライン(イベント・ブランド・調査)の全体戦略を描き、収益を最大化する</li><li>「勝てる組織」の構築。チームマネジメント、採用、評価、育成の仕組みを設計し、運用する</li><li>役員会へのレポーティング、場合によってはアライアンス戦略、M&A検討など、経営直結の特命プロジェクトを推進する</li></ul><p><strong>ポジションの魅力</strong></p><ul><li><strong>事業家という経験</strong>：1つの大きな事業を、あなたの両手に委ねる。その重圧、興奮、そして学びの密度は、他のいかなる経験も凌駕する。あなたの意思決定がダイレクトに事業の未来を左右する。</li><li><strong>事業家への最短距離</strong>：単なるマネージャーではない。「戦略(事業)」と「組織(人材)」の両輪を回す&quot;事業家&quot;としてのスキルセットが身につく。</li><li><strong>強固なアセット</strong>：総合商社・外資コンサル・官公庁など、国内トップティアの顧客基盤と、上位校学生の圧倒的なネットワーク。このアセットをどう活かすかは、あなた次第。</li><li><strong>挑戦の自由度</strong>：役員を説得できれば、ゼロからプロジェクトを立ち上げ、市場開拓のためのリソース(人・金)を得られる環境。成功よりも、むしろ「賢い失敗」の数と、そこからの学びの速度を誇れるカルチャーがある。</li></ul><p><strong>期待する役割</strong></p><p>担当事業を大きくし、日本のキャリアインフラを構築する。同時に、次の成長ドライバーとなる新規施策の仮説検証を完了させ、中長期の戦略を構築する。さらに、自らの右腕となる次世代リーダーを2名以上採用・育成し、「個人の力」ではなく「チームの仕組み」で勝てる組織基盤を構築することで、事業部長としての全幅の信頼を確立する。</p><p><strong>取引先企業一覧</strong></p><p>三菱商事/伊藤忠商事/三井物産/住友商事/丸紅/豊田通商/三井不動産/三菱地所/野村総合研究所(NRI)/サントリー/P&GTOYOTA/BCG/アクセンチュア/PwC/DTC/A.T.カーニー/J.P.モルガン/外務省/経済産業省/デジタル庁/キーエン/JBIC/ディスコ/東京海上日動/ANA/JAL//JR東海/東京メトロ/旭化成/AGC/三菱UFJ銀行/三井住友銀行/日本政策投資銀行/富士フイルム/楽天/日本郵船/商船三井/電通/博報堂/DeNA/サイバーエージェントなど</p><p><strong>キャリアイメージ</strong></p><ul><li><strong>半年後</strong>：担当事業の責任者(部門長)として、単月黒字化および持続的グロースを実現。自ら採用・育成したリーダー陣が自走する「常勝チーム」を構築する。</li><li><strong>1年後</strong>：事業部長として、マッチング事業とコンサルティング事業など、複数の事業を統括。または、ゼロから新規事業(例：採用コンサルティング支援事業、AIエージェント事業など)を立ち上げる責任者へ。</li><li><strong>2年後</strong>：COO(最高執行責任者)など経営幹部として、会社全体の戦略策定・実行を担う「事業家」となっていただくことを期待する。</li></ul><p><strong>必須要件</strong></p><ul><li><span class='tag tag-must'>MUST</span> 弊社のミッションへの共感、バリューへのマッチ</li><li><span class='tag tag-must'>MUST</span> ベンチャー企業の環境に対応可能な柔軟性や能動性</li></ul><p>上記全てに加えて、以下2つのいずれかの業務経験</p><ul><li><span class='tag tag-must'>MUST</span> 人材業界事業責任者(部門長、事業部長、PL責任者)経験1年以上</li><li><span class='tag tag-must'>MUST</span> 営業組織マネジメント経験3年以上(チーム規模10名以上)、且つ営業戦略立案・実行経験</li></ul><p><strong>歓迎要件</strong></p><ul><li><span class='tag tag-want'>WANT</span> 日系外資含めコンサルティングファーム出身(人事系ファームだと大歓迎)</li><li><span class='tag tag-want'>WANT</span> 企業の中長期的経営戦略の立案、実行、管理に携わった経験</li><li><span class='tag tag-want'>WANT</span> 当社が定義するバリューに沿ったスタンスをお持ちの方</li><li><span class='tag tag-want'>WANT</span> 「何でもやる」「最後までやり切る」責任感と、オーナーシップ(当事者意識)を持つ方</li><li><span class='tag tag-want'>WANT</span> 高い目標と現在地との差分を埋めるべく、自身を変化・進化させることができる方</li><li><span class='tag tag-want'>WANT</span> 現状分析、課題分析から目標達成に向けて思考し、行動に移せる方</li><li><span class='tag tag-want'>WANT</span> チーム力を重視し、周囲と積極的なコミュニケーションをとれる方</li></ul><p><strong>年収・待遇</strong></p><ul><li>年収：8,000,000円 - 13,000,000円</li><li>月額：666,666円～1,083,333円(基本給：493,253円～801,558円、見込み残業：173,413円～281,775円)</li><li>※年収についてはご経験や能力に応じて異なります。※見込み残業は45時間分です。</li><li>昇給について：年間で平均17%の昇給率(2025年度)</li></ul><p><strong>勤務地</strong></p><ul><li>東京都港区虎ノ門3丁目8番21号 虎ノ門33森ビル10階</li></ul><p><strong>福利厚生</strong></p><ul><li>社会保険完備(健康保険、厚生年金保険、雇用保険、労災保険)</li><li>ストックオプション制度(年1回、全社員に対して付与)</li><li>福利厚生賃貸　※導入予定</li><li>月例会におけるAward制度</li><li>ピアボーナス制度(unipos)</li><li>部活動制度(1回開催につき、1人あたり2000円の補助あり)</li><li>オフィスランチ支援制度(補助あり)</li><li>ウォーターサーバー・オフィスグリコ常設</li><li>交通費支給(上限3万円／月)</li><li>私服通勤</li></ul><p><strong>休日休暇</strong></p><ul><li>完全週休二日制(土、日)、祝日　※年間休日実績：2025年128日</li><li>年末年始休暇、夏期休暇</li><li>年次有給休暇(初年度10日：試用期間満了後翌日に付与)、慶弔休暇</li><li>産休・育休</li><li>子の看護休暇</li><li>ウェルビーイング休暇※年間1日、法定の有給休暇とは別で入社日に付与</li></ul><p><strong>勤務時間</strong></p><ul><li>9:00-18:00を基本とし、社内規程に則り変更可能とする</li><li>※管理監督者が適用される場合、この限りではありません。</li></ul><p><strong>雇用形態</strong></p><ul><li>正社員</li></ul><p><strong>選考フロー</strong></p><ul><li>1. 書類選考＋ミキワメ「適性検査」</li><li>2. 一次面接</li><li>3. 最終面接</li><li>4. 内定</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏢 オフィス勤務</span><span class="pill">💼 事業責任者</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.leadingmark.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://mikiwame.com/aptitude-test.html" target="_blank">🔍 ミキワメAI 適性検査</a><a class="lbtn lbtn-out" href="https://note.com/yujiiida/n/necbd3d6e1ae8" target="_blank">📝 代表のnote</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが石井健治 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
